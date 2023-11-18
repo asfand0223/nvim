@@ -29,6 +29,7 @@ return {
                     "tsx",
                     "typescript",
                     "yaml",
+                    "fsh",
                 },
                 incremental_selection = {
                     enable = true,

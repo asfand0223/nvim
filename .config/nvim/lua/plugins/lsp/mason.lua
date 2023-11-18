@@ -30,7 +30,7 @@ return {
                 "lua_ls",
                 "tsserver",
                 "yamlls",
-                "fsautocomplete",
+                -- "fsautocomplete",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed
@@ -41,6 +41,7 @@ return {
                 "stylua", -- lua formatter
                 "prettier", -- prettier formatter
                 "eslint_d", -- js linter
+                -- "fantomas", -- fsharp formatter
             },
         })
     end,

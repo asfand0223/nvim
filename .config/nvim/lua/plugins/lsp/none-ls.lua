@@ -17,7 +17,7 @@ return {
                 "eslint_d", -- js linter
                 "prettier", -- prettier formatter
                 "stylua", -- lua formatter
-                "fantomas", -- fsharp formatter
+                -- "fantomas", -- fsharp formatter
             },
         })
 
@@ -40,7 +40,7 @@ return {
                     extra_filetypes = { "json", "yaml", "css", "markdown", "fsharp" },
                 }), -- js/ts formatter
                 formatting.stylua, -- lua formatter
-                formatting.fantomas, -- fsharp formatter
+                -- formatting.fantomas, -- fsharp formatter
             },
             -- configure format on save
             on_attach = function(current_client, bufnr)
