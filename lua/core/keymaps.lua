@@ -1,10 +1,15 @@
 local keymap = vim.keymap
 
+--General keymaps
+keymap.set("n", "<leader>s", "<cmd>:w<cr>", { noremap = true, silent = true })
+keymap.set("n", "<leader>k", "<cmd>:lua vim.lsp.buf.hover()<cr>", { noremap = true, silent = true })
+keymap.set("n", "<leader>w", "<cmd>:wincmd w<cr>", { noremap = true, silent = true })
+
 --Neotree keymaps
 keymap.set("n", "<leader>/", "<cmd>:Neotree toggle<cr>", { noremap = true, silent = true })
 keymap.set("n", "<leader>|", "<cmd>:Neotree reveal<cr>", { noremap = true, silent = true })
 keymap.set("n", "<leader>b", "<cmd>:Neotree toggle show buffers right<cr>", { noremap = true, silent = true })
-keymap.set("n", "<leader>s", "<cmd>:Neotree float git_status<cr>", { noremap = true, silent = true })
+keymap.set("n", "<leader>gs", "<cmd>:Neotree float git_status<cr>", { noremap = true, silent = true })
 
 --Telescope keymaps
 keymap.set(
@@ -41,4 +46,13 @@ keymap.set(
     "<cmd>Telescope buffers<cr>",
     { noremap = true, silent = true },
     { desc = "Fuzzy find open buffers" }
+)
+
+--Diagnostics keymaps
+keymap.set(
+    "n",
+    "<leader>e",
+    '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<cr>',
+    { noremap = true, silent = true },
+    { desc = "Expand error" }
 )
