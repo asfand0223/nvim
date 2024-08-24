@@ -13,46 +13,40 @@ keymap.set("n", "<leader>gs", "<cmd>:Neotree float git_status<cr>", { noremap = 
 
 --Telescope keymaps
 keymap.set(
-    "n",
-    "<leader>ff",
-    "<cmd>Telescope find_files<cr>",
-    { noremap = true, silent = true },
-    { desc = "Fuzzy find files in cwd" }
+	"n",
+	"<leader>ff",
+	"<cmd>Telescope find_files<cr>",
+	{ noremap = true, silent = true, desc = "Fuzzy find files in cwd" }
 )
 keymap.set(
-    "n",
-    "<leader>fr",
-    "<cmd>Telescope oldfiles<cr>",
-    { noremap = true, silent = true },
-    { desc = "Fuzzy find recent files" }
+	"n",
+	"<leader>fr",
+	"<cmd>Telescope oldfiles<cr>",
+	{ noremap = true, silent = true, desc = "Fuzzy find recent files" }
 )
 keymap.set(
-    "n",
-    "<leader>fs",
-    "<cmd>Telescope live_grep<cr>",
-    { noremap = true, silent = true },
-    { desc = "Find string in cwd" }
+	"n",
+	"<leader>fs",
+	"<cmd>Telescope live_grep<cr>",
+	{ noremap = true, silent = true, desc = "Find string in cwd" }
 )
 keymap.set(
-    "n",
-    "<leader>fc",
-    "<cmd>Telescope grep_string<cr>",
-    { noremap = true, silent = true },
-    { desc = "Find string under cursor in cwd" }
+	"n",
+	"<leader>fc",
+	"<cmd>Telescope grep_string<cr>",
+	{ noremap = true, silent = true, desc = "Find string under cursor in cwd" }
 )
 keymap.set(
-    "n",
-    "<leader>fb",
-    "<cmd>Telescope buffers<cr>",
-    { noremap = true, silent = true },
-    { desc = "Fuzzy find open buffers" }
+	"n",
+	"<leader>fb",
+	"<cmd>Telescope buffers<cr>",
+	{ noremap = true, silent = true, desc = "Fuzzy find open buffers" }
 )
 
 --Diagnostics keymaps
 keymap.set(
-    "n",
-    "<leader>e",
-    '<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<cr>',
-    { noremap = true, silent = true },
-    { desc = "Expand error" }
+	"n",
+	"<leader>e",
+	'<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<cr>',
+	{ noremap = true, silent = true, desc = "Expand error" }
 )
