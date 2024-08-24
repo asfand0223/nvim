@@ -17,6 +17,11 @@ return {
 				"eslint_d", -- js linter
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
+				"golangci-lint", -- Go linter
+				"goimports", -- Go imports formatter
+				"gofumpt", -- Go code formatter
+				"gomodifytags", -- Go field tag formatter
+				"golines", -- Go long line formatter
 			},
 		})
 
@@ -35,7 +40,7 @@ return {
 				--  to disable file types use
 				--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 				formatting.prettier.with({
-					extra_filetypes = { "json", "yaml", "css", "markdown" },
+					extra_filetypes = { "json", "yaml", "css", "markdown", "go" },
 				}), -- js/ts formatter
 				formatting.stylua, -- lua formatter
 			},
