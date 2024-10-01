@@ -66,6 +66,23 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
+		-- configure csharp server
+		lspconfig["omnisharp"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			root_dir = require("lspconfig").util.root_pattern(".git", "*.sln", "*.csproj"),
+			cmd = {
+				"bash",
+				"/home/aali/omnisharp-lsp/run",
+				"--languageserver",
+				"--hostPID",
+				tostring(vim.fn.getpid()),
+			},
+			filetypes = { "cs", "vb" },
+			init_options = {
+				AutomaticWorkspaceInit = true,
+			},
+		})
 		-- configure golang server
 		lspconfig["gopls"].setup({
 			capabilities = capabilities,

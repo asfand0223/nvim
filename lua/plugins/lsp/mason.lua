@@ -31,6 +31,7 @@ return {
 				"tsserver", -- typescript language server
 				"yamlls", -- yaml language server
 				"gopls", -- go language sever
+				"omnisharp", -- csharp language server
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
