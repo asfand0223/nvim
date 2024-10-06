@@ -28,9 +28,8 @@ return {
 				"cssls", -- css language server
 				"jsonls", -- json language server
 				"lua_ls", -- lua language server
-				"tsserver", -- typescript language server
+				"ts_ls", -- typescript language server
 				"yamlls", -- yaml language server
-				"gopls", -- go language sever
 				"omnisharp", -- csharp language server
 			},
 			-- auto-install configured servers (with lspconfig)
@@ -42,11 +41,6 @@ return {
 				"stylua", -- lua formatter
 				"prettier", -- prettier formatter
 				"eslint_d", -- js linter
-				"golangci-lint", -- Go linter
-				"goimports", -- Go imports formatter
-				"gofumpt", -- Go code formatter
-				"gomodifytags", -- go field tag formatter
-				"golines", -- Go long line formatter
 			},
 		})
 	end,
