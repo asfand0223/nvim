@@ -82,6 +82,9 @@ return {
 			init_options = {
 				AutomaticWorkspaceInit = true,
 			},
+			enable_roslyn_analyzers = true,
+			organize_imports_on_format = true,
+			enable_import_completion = true,
 		})
 		-- configure html server
 		lspconfig["html"].setup({
