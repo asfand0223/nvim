@@ -3,7 +3,6 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		"Hoffs/omnisharp-extended-lsp.nvim",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
@@ -67,60 +66,11 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
-		-- configure csharp server
-		lspconfig["omnisharp"].setup({
+		lspconfig["csharp_ls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			root_dir = require("lspconfig").util.root_pattern(".git", "*.sln", "*.csproj"),
-			cmd = {
-				"bash",
-				"/home/aali/omnisharp-lsp/run",
-				"--languageserver",
-				"--hostPID",
-				tostring(vim.fn.getpid()),
-			},
 			filetypes = { "cs", "vb" },
-			init_options = {
-				AutomaticWorkspaceInit = true,
-			},
-			handlers = {
-				["textDocument/definition"] = function(...)
-					return require("omnisharp_extended").handler(...)
-				end,
-			},
-			keys = {
-				{
-					"gd",
-					function()
-						require("omnisharp_extended").telescope_lsp_definitions()
-					end,
-					desc = "Goto Definition",
-				},
-			},
-			settings = {
-				FormattingOptions = {
-					-- Enables support for reading code style, naming convention and analyzer
-					-- settings from .editorconfig.
-					EnableEditorConfigSupport = true,
-					-- Specifies whether 'using' directives should be grouped and sorted during
-					-- document formatting.
-					OrganizeImports = true,
-				},
-				RoslynExtensionsOptions = {
-					-- Enables support for roslyn analyzers, code fixes and rulesets.
-					EnableAnalyzersSupport = true,
-					-- Enables support for showing unimported types and unimported extension
-					-- methods in completion lists. When committed, the appropriate using
-					-- directive will be added at the top of the current file. This option can
-					-- have a negative impact on initial completion responsiveness,
-					-- particularly for the first few completion sessions after opening a
-					-- solution.
-					EnableImportCompletion = true,
-					-- Only run analyzers against open files when 'enableRoslynAnalyzers' is
-					-- true
-					AnalyzeOpenDocumentsOnly = true,
-				},
-			},
 		})
 		-- configure html server
 		lspconfig["html"].setup({

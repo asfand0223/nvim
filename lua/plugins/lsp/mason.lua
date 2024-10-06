@@ -30,7 +30,6 @@ return {
 				"lua_ls", -- lua language server
 				"ts_ls", -- typescript language server
 				"yamlls", -- yaml language server
-				"omnisharp", -- csharp language server
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
