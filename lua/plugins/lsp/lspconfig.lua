@@ -3,6 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"Hoffs/omnisharp-extended-lsp.nvim",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
@@ -82,9 +83,44 @@ return {
 			init_options = {
 				AutomaticWorkspaceInit = true,
 			},
-			enable_roslyn_analyzers = true,
-			organize_imports_on_format = true,
-			enable_import_completion = true,
+			handlers = {
+				["textDocument/definition"] = function(...)
+					return require("omnisharp_extended").handler(...)
+				end,
+			},
+			keys = {
+				{
+					"gd",
+					function()
+						require("omnisharp_extended").telescope_lsp_definitions()
+					end,
+					desc = "Goto Definition",
+				},
+			},
+			settings = {
+				FormattingOptions = {
+					-- Enables support for reading code style, naming convention and analyzer
+					-- settings from .editorconfig.
+					EnableEditorConfigSupport = true,
+					-- Specifies whether 'using' directives should be grouped and sorted during
+					-- document formatting.
+					OrganizeImports = true,
+				},
+				RoslynExtensionsOptions = {
+					-- Enables support for roslyn analyzers, code fixes and rulesets.
+					EnableAnalyzersSupport = true,
+					-- Enables support for showing unimported types and unimported extension
+					-- methods in completion lists. When committed, the appropriate using
+					-- directive will be added at the top of the current file. This option can
+					-- have a negative impact on initial completion responsiveness,
+					-- particularly for the first few completion sessions after opening a
+					-- solution.
+					EnableImportCompletion = true,
+					-- Only run analyzers against open files when 'enableRoslynAnalyzers' is
+					-- true
+					AnalyzeOpenDocumentsOnly = true,
+				},
+			},
 		})
 		-- configure html server
 		lspconfig["html"].setup({

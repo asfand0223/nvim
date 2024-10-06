@@ -40,7 +40,7 @@ return {
 			ensure_installed = {
 				"stylua", -- lua formatter
 				"prettier", -- prettier formatter
-				"eslint_d", -- js linter
+				"csharpier", -- csharp formatter
 			},
 		})
 	end,
