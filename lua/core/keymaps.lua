@@ -50,3 +50,6 @@ keymap.set(
 	'<cmd>lua vim.diagnostic.open_float(0, {scope="line"})<cr>',
 	{ noremap = true, silent = true, desc = "Expand error" }
 )
+
+-- Quit neovim
+keymap.set("n", "<leader>q", ":qa<CR>", { noremap = true, silent = true })
