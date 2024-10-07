@@ -11,6 +11,11 @@ return {
 				sidebars = "transparent",
 				float = "transparent",
 			},
+			on_highlights = function(hl, _)
+				hl.BufferLineIndicatorSelected = {
+					fg = "#4800FF",
+				}
+			end,
 		})
 		vim.cmd.colorscheme("tokyonight-storm")
 	end,

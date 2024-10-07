@@ -5,6 +5,8 @@ return {
 	opts = {
 		options = {
 			mode = "tabs",
+			indicator = { icon = "", style = "icon" },
+			buffer_close_icon = { "" },
 			offsets = {
 				{
 					filetype = "neo-tree",
@@ -13,6 +15,23 @@ return {
 					text_align = "center",
 					separator = true,
 				},
+			},
+		},
+		highlights = {
+			buffer_selected = {
+				fg = "#FFFFFF",
+				bg = "#4800FF",
+				bold = true,
+				italic = true,
+			},
+			close_button = {
+				fg = "#000000",
+			},
+			close_button_visible = {
+				fg = "#000000",
+			},
+			close_button_selected = {
+				fg = "#4800FF",
 			},
 		},
 	},
@@ -30,7 +49,6 @@ return {
 			print("Bufferline API not available")
 			return
 		end
-
 		local function get_neo_tree_width()
 			for _, win in ipairs(vim.api.nvim_list_wins()) do
 				local buf = vim.api.nvim_win_get_buf(win)
