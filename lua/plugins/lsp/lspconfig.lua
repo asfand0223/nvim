@@ -72,6 +72,12 @@ return {
 			root_dir = require("lspconfig").util.root_pattern(".git", "*.sln", "*.csproj"),
 			filetypes = { "cs", "vb" },
 		})
+		lspconfig["clangd"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile"),
+			filetypes = { "cpp" },
+		})
 		-- configure html server
 		lspconfig["html"].setup({
 			capabilities = capabilities,
