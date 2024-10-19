@@ -77,6 +77,10 @@ return {
 			on_attach = on_attach,
 			root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile"),
 			filetypes = { "cpp" },
+			cmd = {
+				"clangd",
+				"--offset-encoding=utf-16",
+			},
 		})
 		-- configure html server
 		lspconfig["html"].setup({
