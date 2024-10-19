@@ -1,11 +1,12 @@
 return {
-	"folke/tokyonight.nvim",
+	"eldritch-theme/eldritch.nvim",
+
 	lazy = false,
 	priority = 1000,
 	opts = {},
 	config = function()
-		local tokyonight = require("tokyonight")
-		tokyonight.setup({
+		local theme = require("eldritch")
+		theme.setup({
 			transparent = true,
 			styles = {
 				sidebars = "transparent",
@@ -17,6 +18,6 @@ return {
 				}
 			end,
 		})
-		vim.cmd.colorscheme("tokyonight-storm")
+		vim.cmd.colorscheme("eldritch")
 	end,
 }
