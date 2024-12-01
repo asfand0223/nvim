@@ -5,6 +5,22 @@ keymap.set("n", "<leader>s", "<cmd>:w<cr>", { noremap = true, silent = true })
 keymap.set("n", "<leader>k", "<cmd>:lua vim.lsp.buf.hover()<cr>", { noremap = true, silent = true })
 keymap.set("n", "<leader>w", "<cmd>:wincmd w<cr>", { noremap = true, silent = true })
 
+-- Yank remaps
+-- - Yank
+keymap.set("v", "<leader>ay", '"ay<cr>', { noremap = true, silent = true })
+keymap.set("v", "<leader>by", '"by<cr>', { noremap = true, silent = true })
+keymap.set("v", "<leader>cy", '"cy<cr>', { noremap = true, silent = true })
+
+-- - Paste
+keymap.set("n", "<leader>ap", '"ap<cr>', { noremap = true, silent = true })
+keymap.set("n", "<leader>bp", '"bp<cr>', { noremap = true, silent = true })
+keymap.set("n", "<leader>cp", '"cp<cr>', { noremap = true, silent = true })
+
+-- -Delete
+keymap.set("v", "<leader>ad", '"ad<cr>', { noremap = true, silent = true })
+keymap.set("v", "<leader>bd", '"bd<cr>', { noremap = true, silent = true })
+keymap.set("v", "<leader>cd", '"cd<cr>', { noremap = true, silent = true })
+
 --Neotree keymaps
 keymap.set("n", "<leader>/", "<cmd>:Neotree toggle<cr>", { noremap = true, silent = true })
 keymap.set("n", "<leader>|", "<cmd>:Neotree reveal<cr>", { noremap = true, silent = true })
