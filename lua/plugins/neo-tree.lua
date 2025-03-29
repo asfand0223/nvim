@@ -9,10 +9,12 @@ return {
 	config = function()
 		local neotree = require("neo-tree")
 		neotree.setup({
-			filtered_items = {
-				hide_dotfiles = false,
-				hide_gitignored = false,
-				hide_hidden = false,
+			filesystem = {
+				filtered_items = {
+					visible = true,
+					hide_dotfiles = false,
+					hide_gitignored = false,
+				},
 			},
 		})
 	end,
