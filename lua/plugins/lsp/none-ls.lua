@@ -28,6 +28,7 @@ return {
 					extra_filetypes = { "json", "yaml", "css", "markdown", "ts", "tsx" },
 				}), -- js/ts formatter
 				formatting.stylua, -- lua formatter
+				formatting.csharpier, -- csharp formatter
 			},
 			-- configure format on save
 			on_attach = function(current_client, bufnr)
