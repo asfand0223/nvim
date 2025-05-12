@@ -3,24 +3,12 @@ return {
 	lazy = true,
 	-- event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
 	dependencies = {
-		"jay-babu/mason-null-ls.nvim",
 		"nvimtools/none-ls-extras.nvim",
 	},
 	config = function()
-		local mason_null_ls = require("mason-null-ls")
-
 		local null_ls = require("null-ls")
 
 		local null_ls_utils = require("null-ls.utils")
-
-		mason_null_ls.setup({
-			ensure_installed = {
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
-				"csharpier", -- C# formatter
-				"cpplint", -- C++ linter
-			},
-		})
 
 		-- for conciseness
 		local formatting = null_ls.builtins.formatting -- to setup formatters
@@ -37,11 +25,9 @@ return {
 				--  to disable file types use
 				--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 				formatting.prettier.with({
-					extra_filetypes = { "json", "yaml", "css", "markdown", "ts", "tsx", "cs" },
-				}), -- js/ts formatter
+					extra_filetypes = { "json", "yaml", "css", "markdown", "ts", "tsx" },
+				}),    -- js/ts formatter
 				formatting.stylua, -- lua formatter
-				formatting.csharpier, --csharp formatter
-				require("none-ls.diagnostics.cpplint"), -- C++ linter
 			},
 			-- configure format on save
 			on_attach = function(current_client, bufnr)

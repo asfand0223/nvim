@@ -26,6 +26,7 @@ return {
 					"typescript",
 					"yaml",
 					"fsh",
+					"c_sharp",
 				},
 				incremental_selection = {
 					enable = true,

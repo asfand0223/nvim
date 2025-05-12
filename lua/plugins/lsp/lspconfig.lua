@@ -66,63 +66,33 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
+		-- configure csharp server
 		lspconfig["csharp_ls"].setup({
+			cmd = { "csharp-ls" },
+			filetypes = { "cs" },
+			root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
 			capabilities = capabilities,
 			on_attach = on_attach,
-			root_dir = require("lspconfig").util.root_pattern(".git", "*.sln", "*.csproj"),
-			filetypes = { "cs", "vb" },
-		})
-		lspconfig["clangd"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", "Makefile"),
-			filetypes = { "cpp" },
-			cmd = {
-				"clangd",
-				"--offset-encoding=utf-16",
-			},
-		})
-		-- configure html server
-		lspconfig["html"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-		-- configure typescript server with plugin
-		lspconfig["ts_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-		-- configure css server
-		lspconfig["cssls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-		-- configure json server
-		lspconfig["jsonls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-		-- configure yaml server
-		lspconfig["yamlls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
+			settings = {
+				csharp = {
+
+					diagnostics = {
+						globals = { "vim" },
+					},
+				}
+			}
 		})
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
 			capabilities = capabilities,
+			cmd = { "/home/aali/.local/share/lua_ls/bin/lua-language-server" },
 			on_attach = on_attach,
 			settings = { -- custom settings for lua
 				Lua = {
+					runtime = { version = "LuaJIT" },
 					-- make the language server recognize "vim" global
 					diagnostics = {
 						globals = { "vim" },
-					},
-					workspace = {
-						-- make language server aware of runtime files
-						library = {
-							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-							[vim.fn.stdpath("config") .. "/lua"] = true,
-						},
 					},
 				},
 			},
