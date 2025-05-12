@@ -26,7 +26,7 @@ return {
 				--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 				formatting.prettier.with({
 					extra_filetypes = { "json", "yaml", "css", "markdown", "ts", "tsx" },
-				}),    -- js/ts formatter
+				}), -- js/ts formatter
 				formatting.stylua, -- lua formatter
 			},
 			-- configure format on save
