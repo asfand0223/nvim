@@ -67,8 +67,14 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 		-- configure csharp server
-		lspconfig["csharp_ls"].setup({
-			cmd = { "csharp-ls" },
+		lspconfig["omnisharp"].setup({
+			cmd = {
+				"mono",
+				"/home/aali/.local/share/omnisharp/OmniSharp.exe",
+				"--languageserver",
+				"--hostPID",
+				tostring(vim.fn.getpid()),
+			},
 			filetypes = { "cs" },
 			root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
 			capabilities = capabilities,
@@ -79,8 +85,13 @@ return {
 					diagnostics = {
 						globals = { "vim" },
 					},
-				}
-			}
+				},
+			},
+		})
+		lspconfig["ts_ls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 		})
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
