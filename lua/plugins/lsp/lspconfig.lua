@@ -88,6 +88,11 @@ return {
 				},
 			},
 		})
+		lspconfig["cssls"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = { "css", "scss" },
+		})
 		lspconfig["ts_ls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
