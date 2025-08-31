@@ -69,8 +69,7 @@ return {
 		-- configure csharp server
 		lspconfig["omnisharp"].setup({
 			cmd = {
-				"mono",
-				"/home/aali/.local/share/omnisharp/OmniSharp.exe",
+				"/home/aali/.local/share/omnisharp/OmniSharp", -- Linux SDK binary
 				"--languageserver",
 				"--hostPID",
 				tostring(vim.fn.getpid()),
@@ -81,7 +80,6 @@ return {
 			on_attach = on_attach,
 			settings = {
 				csharp = {
-
 					diagnostics = {
 						globals = { "vim" },
 					},
@@ -96,7 +94,7 @@ return {
 		lspconfig["ts_ls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+			filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact" },
 		})
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
