@@ -54,6 +54,15 @@ return {
 
 			opts.desc = "Restart LSP"
 			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				buffer = bufnr,
+				callback = function()
+					vim.lsp.buf.format({
+						async = false,
+					})
+				end,
+			})
 		end
 		-- used to enable autocompletion (assign to every lsp server config)
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
