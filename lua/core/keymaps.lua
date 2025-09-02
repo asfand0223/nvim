@@ -2,8 +2,69 @@ local keymap = vim.keymap
 
 --General keymaps
 keymap.set("n", "<leader>s", "<cmd>:w<cr>", { noremap = true, silent = true })
-keymap.set("n", "<leader>k", "<cmd>:lua vim.lsp.buf.hover()<cr>", { noremap = true, silent = true })
 keymap.set("n", "<leader>w", "<cmd>:wincmd w<cr>", { noremap = true, silent = true })
+
+-- Lspsaga keymaps
+local keymap = vim.keymap
+
+-- === LSP / Lspsaga Keymaps ===
+-- Hover documentation
+keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { noremap = true, silent = true, desc = "Hover documentation" })
+
+-- Peek definition
+keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { noremap = true, silent = true, desc = "Peek definition" })
+
+-- LSP Finder (references & definition)
+keymap.set(
+	"n",
+	"gr",
+	"<cmd>Lspsaga lsp_finder<CR>",
+	{ noremap = true, silent = true, desc = "Find references/definition" }
+)
+
+-- Code actions (normal + visual mode)
+keymap.set(
+	{ "n", "v" },
+	"<leader>ca",
+	"<cmd>Lspsaga code_action<CR>",
+	{ noremap = true, silent = true, desc = "Code actions" }
+)
+
+-- Rename symbol
+keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { noremap = true, silent = true, desc = "Rename symbol" })
+
+-- Show line diagnostics
+keymap.set(
+	"n",
+	"<leader>d",
+	"<cmd>Lspsaga show_line_diagnostics<CR>",
+	{ noremap = true, silent = true, desc = "Line diagnostics" }
+)
+
+-- Jump to previous/next diagnostic
+keymap.set(
+	"n",
+	"[e",
+	"<cmd>Lspsaga diagnostic_jump_prev<CR>",
+	{ noremap = true, silent = true, desc = "Previous diagnostic" }
+)
+keymap.set(
+	"n",
+	"]e",
+	"<cmd>Lspsaga diagnostic_jump_next<CR>",
+	{ noremap = true, silent = true, desc = "Next diagnostic" }
+)
+
+-- Show buffer diagnostics
+keymap.set(
+	"n",
+	"<leader>D",
+	"<cmd>Lspsaga show_buf_diagnostics<CR>",
+	{ noremap = true, silent = true, desc = "Buffer diagnostics" }
+)
+
+-- Optional: Outline (symbol tree)
+keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { noremap = true, silent = true, desc = "LSP symbol outline" })
 
 -- Yank remaps
 -- - Yank
