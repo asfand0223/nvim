@@ -7,13 +7,13 @@ return {
 	config = function()
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
-
 		local keymap = vim.keymap -- for conciseness
-
 		local opts = { noremap = true, silent = true }
 
 		local on_attach = function(_, bufnr)
+			-- set buffer
 			opts.buffer = bufnr
+
 			-- set keybinds
 			opts.desc = "Show LSP references"
 			keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
@@ -64,10 +64,9 @@ return {
 			})
 		end
 		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
