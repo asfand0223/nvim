@@ -53,5 +53,6 @@ return {
 			--   }
 			-- end,
 		})
+		vim.cmd("colorscheme dracula")
 	end,
 }
