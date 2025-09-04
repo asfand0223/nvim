@@ -45,6 +45,9 @@ return {
 			on_attach = on_attach,
 			settings = {
 				csharp = {
+					formattingOptions = {
+						enable = false,
+					},
 					diagnostics = {
 						globals = { "vim" },
 					},
