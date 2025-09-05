@@ -5,14 +5,10 @@ return {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
-		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
-		local keymap = vim.keymap -- for conciseness
-		local opts = { noremap = true, silent = true }
 
 		local on_attach = function(_, bufnr)
 			-- set buffer
-			opts.buffer = bufnr
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				buffer = bufnr,
 				callback = function()
@@ -39,7 +35,7 @@ return {
 				"--hostPID",
 				tostring(vim.fn.getpid()),
 			},
-			filetypes = { "cs" },
+			filetypes = { "cs", "cshtml" },
 			root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
 			capabilities = capabilities,
 			on_attach = on_attach,
@@ -54,6 +50,12 @@ return {
 				},
 			},
 		})
+		lspconfig["html"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = { "html", "cshtml" },
+		})
+
 		lspconfig["cssls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,

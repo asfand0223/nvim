@@ -9,8 +9,12 @@ return {
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.prettier,
-				null_ls.builtins.formatting.csharpier,
+				null_ls.builtins.formatting.prettier.with({
+					filetypes = { "javascript", "typescript", "html", "css", "json", "md", "cshtml" },
+				}),
+				null_ls.builtins.formatting.csharpier.with({
+					filetypes = { "cs", ".cshtml" },
+				}),
 				require("none-ls.diagnostics.eslint"),
 			},
 		})
