@@ -13,7 +13,7 @@ return {
 					filetypes = { "javascript", "typescript", "html", "css", "json", "md", "cshtml" },
 				}),
 				null_ls.builtins.formatting.csharpier.with({
-					filetypes = { "cs", ".cshtml" },
+					filetypes = { "cs", "cshtml" },
 				}),
 				require("none-ls.diagnostics.eslint"),
 			},
